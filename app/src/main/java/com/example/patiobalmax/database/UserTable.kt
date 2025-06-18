@@ -1,4 +1,4 @@
-package com.balmax.patiobalmax.database
+package com.example.patiobalmax.database
 
 object UserTable {
     const val TABLE_NAME = "users"
