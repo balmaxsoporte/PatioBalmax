@@ -1,4 +1,4 @@
-package com.balmax.patiobalmax
+package com.example.patiobalmax
 
 object UserData {
     val users = listOf(User("admin", "admin", true, true, true))
