@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Puesto X - Patio Y" />
+
+    <AutoCompleteTextView
+        android:id="@+id/vehicleType1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tipo de vehículo 1" />
+
+    <EditText
+        android:id="@+id/licensePlate1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Patente 1" />
+
+    <AutoCompleteTextView
+        android:id="@+id/vehicleType2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tipo de vehículo 2 (opcional)" />
+
+    <EditText
+        android:id="@+id/licensePlate2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Patente 2 (opcional)" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver" />
+</LinearLayout>
