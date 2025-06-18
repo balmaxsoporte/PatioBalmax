@@ -1,9 +1,9 @@
-package com.balmax.patiobalmax
+package com.example.patiobalmax
 
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import com.balmax.patiobalmax.databinding.ParkingSpotDetailsBinding
+import com.example.patiobalmax.databinding.ParkingSpotDetailsBinding
 
 class ParkingSpotDetails : AppCompatActivity() {
 
