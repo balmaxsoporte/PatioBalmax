@@ -1,9 +1,9 @@
-package com.balmax.patiobalmax
+package com.example.patiobalmax
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.balmax.patiobalmax.databinding.MapScreenBinding
+import com.example.patiobalmax.databinding.MapScreenBinding
 
 class MapScreen : AppCompatActivity() {
 
