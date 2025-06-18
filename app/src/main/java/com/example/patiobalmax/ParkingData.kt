@@ -1,6 +1,6 @@
-package com.balmax.patiobalmax
+package com.example.patiobalmax
 
-import com.balmax.patiobalmax.utils.FileUtils
+import com.example.patiobalmax.utils.FileUtils
 import android.content.Context
 
 object ParkingData {
