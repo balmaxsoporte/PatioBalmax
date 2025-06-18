@@ -1,8 +1,8 @@
-package com.balmax.patiobalmax
+package com.example.patiobalmax
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.balmax.patiobalmax.databinding.UserManagementBinding
+import com.example.patiobalmax.databinding.UserManagementBinding
 
 class UserManagement : AppCompatActivity() {
 
