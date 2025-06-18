@@ -18,9 +18,16 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(
 
     override fun onCreate(db: SQLiteDatabase?) {
         db?.execSQL(UserTable.CREATE_TABLE)
-        db?.execSQL(ParkingSpotTable.CREATE_TABLE)
-        db?.execSQL(LicensePlateTable.CREATE_TABLE)
+        val defaultUser = ContentValues().apply {
+            put(UserTable.COLUMN_USERNAME, "admin")
+            put(UserTable.COLUMN_PASSWORD, "admin") // Mejor cifrar después
+            put(UserTable.COLUMN_EDIT_USERS, 1)
+            put(UserTable.COLUMN_EDIT_PARKING_LOTS, 1)
+            put(UserTable.COLUMN_EDIT_LICENSE_PLATES, 1)
+        }
+        db?.insert(UserTable.TABLE_NAME, null, defaultUser)
     }
+
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         // Aquí puedes manejar actualizaciones de esquema si cambian las tablas
