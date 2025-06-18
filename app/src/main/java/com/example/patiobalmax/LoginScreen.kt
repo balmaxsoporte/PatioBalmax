@@ -1,10 +1,10 @@
-package com.balmax.patiobalmax
+package com.example.patiobalmax
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.balmax.patiobalmax.databinding.LoginScreenBinding
+import com.example.patiobalmax.databinding.LoginScreenBinding
 
 class LoginScreen : AppCompatActivity() {
 
