@@ -1,4 +1,4 @@
-package com.balmax.patiobalmax
+package com.example.patiobalmax
 
 import android.content.Intent
 import android.os.Bundle
