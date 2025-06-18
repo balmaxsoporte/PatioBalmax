@@ -1,4 +1,4 @@
-package com.balmax.patiobalmax.database
+package com.example.patiobalmax.database
 
 import android.content.ContentValues
 import android.database.Cursor
