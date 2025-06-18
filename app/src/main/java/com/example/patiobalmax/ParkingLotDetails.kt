@@ -1,9 +1,9 @@
-package com.balmax.patiobalmax
+package com.example.patiobalmax
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.balmax.patiobalmax.databinding.ParkingLotDetailsBinding
-import com.balmax.patiobalmax.utils.getColorForPlateType
+import com.example.patiobalmax.databinding.ParkingLotDetailsBinding
+import com.example.patiobalmax.utils.getColorForPlateType
 
 class ParkingLotDetails : AppCompatActivity() {
 
