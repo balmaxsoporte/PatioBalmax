@@ -1,4 +1,4 @@
-package com.balmax.patiobalmax.utils
+package com.example.patiobalmax.utils
 
 import android.content.Context
 
