@@ -1,7 +1,7 @@
-package com.balmax.patiobalmax.utils
+package com.example.patiobalmax.utils
 
 import android.graphics.Color
-import com.balmax.patiobalmax.ParkingData.PlateType
+import com.example.patiobalmax.ParkingData.PlateType
 
 fun getColorForPlateType(type: PlateType): Int {
     return when (type) {
