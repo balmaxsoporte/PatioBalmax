@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.patiobalmax">
+
+    <application
+        android:allowBackup="true"
+        android:label="PatioBalmax"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        
+        <!-- Actividad principal -->
+        <activity
+            android:name=".MainActivity"
+            android:label="PatioBalmax">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Otras actividades -->
+        <activity android:name=".LoginScreen" />
+        <activity android:name=".MapScreen" />
+        <activity android:name=".ParkingLotDetails" />
+        <activity android:name=".ParkingSpotDetails" />
+        <activity android:name=".UserManagement" />
+
+    </application>
+
+</manifest>
