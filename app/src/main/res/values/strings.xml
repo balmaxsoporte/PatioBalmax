@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PatioBalmax</string>
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="hint_username">Usuario</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="button_login">Iniciar Sesión</string>
+    <string name="error_invalid_credentials">Credenciales incorrectas</string>
+    <string name="map_title">Mapa del Estacionamiento</string>
+    <string name="button_users">Usuarios</string>
+</resources>
