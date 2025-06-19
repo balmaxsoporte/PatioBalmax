@@ -2,7 +2,6 @@ package com.example.patiobalmax
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.patiobalmax.databinding.LoginScreenBinding
 
@@ -12,9 +11,12 @@ class LoginScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Inflar el binding
         binding = LoginScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Acceder a los elementos desde el binding
         binding.loginButton.setOnClickListener {
             val username = binding.usernameEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
@@ -23,7 +25,7 @@ class LoginScreen : AppCompatActivity() {
                 startActivity(Intent(this, MapScreen::class.java))
                 finish()
             } else {
-                Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                // Mostrar mensaje de error
             }
         }
     }
