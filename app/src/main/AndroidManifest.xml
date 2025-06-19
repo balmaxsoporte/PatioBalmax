@@ -19,12 +19,35 @@
             </intent-filter>
         </activity>
 
-        <!-- Otras actividades -->
-        <activity android:name=".LoginScreen" />
-        <activity android:name=".MapScreen" />
-        <activity android:name=".ParkingLotDetails" />
-        <activity android:name=".ParkingSpotDetails" />
-        <activity android:name=".UserManagement" />
+       <!-- LoginScreen -->
+        <activity
+            android:name=".LoginScreen"
+            android:label="Login"
+            android:exported="false" />
+
+        <!-- MapScreen -->
+        <activity
+            android:name=".MapScreen"
+            android:label="Mapa"
+            android:exported="false" />
+
+        <!-- ParkingLotDetails -->
+        <activity
+            android:name=".ParkingLotDetails"
+            android:label="Detalles del Patio"
+            android:exported="false" />
+
+        <!-- ParkingSpotDetails -->
+        <activity
+            android:name=".ParkingSpotDetails"
+            android:label="Detalles del Puesto"
+            android:exported="false" />
+
+        <!-- UserManagement -->
+        <activity
+            android:name=".UserManagement"
+            android:label="Gestión de Usuarios"
+            android:exported="false" />
 
     </application>
 
