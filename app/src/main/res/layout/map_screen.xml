@@ -8,7 +8,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/parking_map" />
+        android:src="@drawable/parking_map"
+        android:layout_marginBottom="16dp"/>
 
     <GridLayout
         android:layout_width="match_parent"
@@ -16,14 +17,67 @@
         android:columnCount="3"
         android:rowCount="3">
 
-        <Button android:id="@+id/patio1Button" android:text="Patio 1"/>
-        <Button android:id="@+id/patio2Button" android:text="Patio 2"/>
-        <Button android:id="@+id/patio3Button" android:text="Patio 3"/>
-        <Button android:id="@+id/patio4Button" android:text="Patio 4"/>
-        <Button android:id="@+id/patio5Button" android:text="Patio 5"/>
-        <Button android:id="@+id/patio6Button" android:text="Patio 6"/>
-        <Button android:id="@+id/patio7Button" android:text="Patio 7"/>
+        <Button
+            android:id="@+id/patio1Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Patio 1" />
 
-        <Button android:id="@+id/userManagementButton" android:text="Usuarios"/>
+        <Button
+            android:id="@+id/patio2Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Patio 2" />
+
+        <Button
+            android:id="@+id/patio3Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Patio 3" />
+
+        <Button
+            android:id="@+id/patio4Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Patio 4" />
+
+        <Button
+            android:id="@+id/patio5Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Patio 5" />
+
+        <Button
+            android:id="@+id/patio6Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Patio 6" />
+
+        <Button
+            android:id="@+id/patio7Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="Patio 7" />
+
+        <!-- Espacio vacío -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1" />
+
     </GridLayout>
+
+    <Button
+        android:id="@+id/userManagementButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Usuarios"
+        android:layout_marginTop="16dp"/>
 </LinearLayout>
