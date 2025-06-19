@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/spotLayout"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp"
-    android:background="@color/white">
-
+    android:padding="8dp"
+    android:id="@+id/spotLayout">
+    
     <TextView
         android:id="@+id/spotNumberTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Puesto X"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/licensePlateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Patente: ABC123"
-        android:textSize="14sp" />
+        android:textSize="14sp"/>
 </LinearLayout>
