@@ -1,7 +1,6 @@
 package com.example.patiobalmax.database
 
 import android.content.ContentValues
-import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
@@ -38,11 +37,11 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(
     }
 
     fun addUser(username: String, password: String): Long {
-        val db = writableDatabase
-        val values = ContentValues().apply {
-            put(COLUMN_USERNAME, username)
-            put(COLUMN_PASSWORD, password)
-        }
-        return db.insert(TABLE_USERS, null, values)
+    val db = writableDatabase
+    val values = ContentValues().apply {
+        put("username", username)
+        put("password", password)
     }
+    return db.insert("users", null, values)
+}
 }
