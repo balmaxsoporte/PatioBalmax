@@ -9,8 +9,9 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Detalles del Puesto"
         android:textSize="20sp"
-        android:text="Puesto X - Patio Y" />
+        android:textStyle="bold" />
 
     <AutoCompleteTextView
         android:id="@+id/vehicleType1"
