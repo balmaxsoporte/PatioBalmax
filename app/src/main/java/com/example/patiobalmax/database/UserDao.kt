@@ -3,6 +3,17 @@ package com.example.patiobalmax.database
 import android.content.ContentValues
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.widget.Toast
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.LinearLayout
+import androidx.core.widget.NestedScrollView
+import android.view.LayoutInflater
+import android.view.View
 
 class UserDao(private val db: SQLiteDatabase) {
 
