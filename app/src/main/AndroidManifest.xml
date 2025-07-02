@@ -12,15 +12,24 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginEstacionamiento"
+            android:exported="true"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MapaEstacionamiento" />
-        <activity android:name=".PatioEstacionamiento" />
-        <activity android:name=".EditarPatioEstacionamiento" />
-        <activity android:name=".AdministrarUsuarios" />
+        <activity
+            android:name=".MapaEstacionamiento"
+            android:exported="false" />
+        <activity
+            android:name=".PatioEstacionamiento"
+            android:exported="false" />
+        <activity
+            android:name=".EditarPatioEstacionamiento"
+            android:exported="false" />
+        <activity
+            android:name=".AdministrarUsuarios"
+            android:exported="false" />
     </application>
 </manifest>
