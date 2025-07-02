@@ -15,7 +15,8 @@
             android:id="@+id/iconoAutoCamion"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/icono_auto"/>
 
         <TextView
             android:id="@+id/tvNumeroPuesto"
@@ -42,8 +43,8 @@
             android:id="@+id/iconoEdit"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/icono_edit"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp"
+            android:src="@drawable/icono_edit"/>
     </LinearLayout>
 
     <TextView
