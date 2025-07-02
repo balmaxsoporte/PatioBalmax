@@ -16,6 +16,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.BufferedReader
 import java.io.InputStreamReader
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AdministrarUsuarios : AppCompatActivity() {
 
@@ -34,12 +36,12 @@ class AdministrarUsuarios : AppCompatActivity() {
         uri?.let { fileUri ->
             CoroutineScope(Dispatchers.IO).launch {
                 val content = contentResolver.openInputStream(fileUri)?.use { inputStream ->
-                    BufferedReader(InputStreamReader(inputStream)).readLines()
+                    BufferedReader(InputStreamReader(inputStream)).readLines().joinToString("\n")
                 }
                 withContext(Dispatchers.Main) {
                     if (!content.isNullOrEmpty()) {
                         Toast.makeText(this@AdministrarUsuarios, "Archivo cargado", Toast.LENGTH_SHORT).show()
-                        actualizarHistorial(fileUri.lastPathSegment ?: "", content.joinToString("\n"))
+                        actualizarHistorial(fileUri.lastPathSegment ?: "", content)
                     } else {
                         Toast.makeText(this@AdministrarUsuarios, "Error al leer el archivo", Toast.LENGTH_SHORT).show()
                     }
@@ -120,5 +122,6 @@ class AdministrarUsuarios : AppCompatActivity() {
             }
             historialParticulares.add(contenido)
         }
+        Toast.makeText(this, "Archivo guardado en historial", Toast.LENGTH_SHORT).show()
     }
 }
