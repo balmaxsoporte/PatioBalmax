@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.kapt") // Necesario para Room
 }
 
 android {
@@ -36,23 +37,23 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+}
 
-    dependencies {
-        implementation("androidx.core:core-ktx:1.10.1")
-        implementation("androidx.appcompat:appcompat:1.6.1")
-        implementation("com.google.android.material:material:1.9.0")
-        implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+dependencies {
+    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.9.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
-        // Room Database
-        implementation("androidx.room:room-runtime:2.5.2")
-        kapt("androidx.room:room-compiler:2.5.2")
-        implementation("androidx.room:room-ktx:2.5.2")
+    // Room Database
+    implementation("androidx.room:room-runtime:2.5.2")
+    kapt("androidx.room:room-compiler:2.5.2")
+    implementation("androidx.room:room-ktx:2.5.2")
 
-        // Lifecycle
-        implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-        implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+    // Lifecycle
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 
-        // File Picker
-        implementation("com.github.tonyofrancis.FilePicker:filepicker:1.0.3")
-    }
+    // File Picker
+    implementation("com.github.tonyofrancis.FilePicker:filepicker:1.0.3")
 }
