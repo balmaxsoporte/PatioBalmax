@@ -16,8 +16,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import java.text.SimpleDateFormat
-import java.util.*
 
 class AdministrarUsuarios : AppCompatActivity() {
 
@@ -122,6 +120,9 @@ class AdministrarUsuarios : AppCompatActivity() {
             }
             historialParticulares.add(contenido)
         }
-        Toast.makeText(this, "Archivo guardado en historial", Toast.LENGTH_SHORT).show()
+        runOnUiThread {
+            binding.tvHistorialArrendatarios.text = "Últimos arrendatarios:\n" + historialArrendatarios.joinToString("\n")
+            binding.tvHistorialParticulares.text = "Últimos particulares:\n" + historialParticulares.joinToString("\n")
+        }
     }
 }
