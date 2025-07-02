@@ -1,6 +1,10 @@
 package com.example.patiobalmax
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.patiobalmax.adapter.UsuarioAdapter
@@ -9,12 +13,31 @@ import com.example.patiobalmax.databinding.ActivityAdministrarUsuariosBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AdministrarUsuarios : AppCompatActivity() {
 
     private lateinit var binding: ActivityAdministrarUsuariosBinding
     private lateinit var adapter: UsuarioAdapter
     private val db by lazy { AppDatabase.getDatabase(this) }
+
+    // Contrato para seleccionar archivo
+    private val pickFileLauncher = registerForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let { fileUri ->
+            CoroutineScope(Dispatchers.IO).launch {
+                val content = contentResolver.openInputStream(fileUri)?.bufferedReader()?.readLines()
+                withContext(Dispatchers.Main) {
+                    if (content != null && content.isNotEmpty()) {
+                        Toast.makeText(this@AdministrarUsuarios, "Archivo cargado", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@AdministrarUsuarios, "Error al leer el archivo", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +60,23 @@ class AdministrarUsuarios : AppCompatActivity() {
                             permisos = permisos
                         )
                     )
-                    runOnUiThread {
+                    withContext(Dispatchers.Main) {
                         binding.etNombreUsuario.text?.clear()
                         binding.etContrasenaUsuario.text?.clear()
+                        Toast.makeText(this@AdministrarUsuarios, "Usuario agregado", Toast.LENGTH_SHORT).show()
                     }
                 }
+            } else {
+                Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.btnCargarArrendatario.setOnClickListener {
+            pickFileLauncher.launch("text/*")
+        }
+
+        binding.btnCargarParticular.setOnClickListener {
+            pickFileLauncher.launch("text/*")
         }
 
         binding.btnVolver.setOnClickListener {
@@ -52,12 +86,12 @@ class AdministrarUsuarios : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         adapter = UsuarioAdapter { usuario ->
-            // Implementar edición o eliminación
+            Toast.makeText(this, "Editar ${usuario.nombreUsuario}", Toast.LENGTH_SHORT).show()
         }
 
         CoroutineScope(Dispatchers.IO).launch {
             val usuarios = db.usuarioDao().getAll()
-            runOnUiThread {
+            withContext(Dispatchers.Main) {
                 binding.rvUsuarios.layoutManager = LinearLayoutManager(this@AdministrarUsuarios)
                 binding.rvUsuarios.adapter = adapter
                 adapter.submitList(usuarios)
