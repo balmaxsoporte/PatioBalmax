@@ -26,7 +26,6 @@ class PatioEstacionamiento : AppCompatActivity() {
 
         setupRecyclerView()
 
-        // Cargar puestos del patio desde base de datos
         CoroutineScope(Dispatchers.IO).launch {
             val puestos = db.puestoDao().getByPatio(patioNumero)
             runOnUiThread {
