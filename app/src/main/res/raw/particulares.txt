@@ -1,0 +1,3 @@
+"Patio 2","Puesto 1","Auto","QQ1122","Rampla","WW1122"
+"Patio 2","Puesto 2","Camión","EE3344","Termo","RR5566"
+"Patio 2","Puesto 3","Camión","TT7788","Carro","YY9900"
