@@ -29,7 +29,15 @@ class PatioEstacionamiento : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val puestos = db.puestoDao().getByPatio(patioNumero)
             runOnUiThread {
-                adapter.submitList(puestos)
+                if (puestos.isNotEmpty()) {
+                    adapter.submitList(puestos)
+                } else {
+                    Toast.makeText(
+                        this@PatioEstacionamiento,
+                        "No hay puestos registrados",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
 
