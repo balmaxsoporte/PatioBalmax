@@ -30,7 +30,13 @@ class AdministrarUsuarios : AppCompatActivity() {
 
             if (nombre.isNotBlank() && contrasena.isNotBlank()) {
                 CoroutineScope(Dispatchers.IO).launch {
-                    db.usuarioDao().insert(Usuario(nombreUsuario = nombre, contrasena = contrasena, permisos = permisos))
+                    db.usuarioDao().insert(
+                        com.example.patiobalmax.database.entity.Usuario(
+                            nombreUsuario = nombre,
+                            contrasena = contrasena,
+                            permisos = permisos
+                        )
+                    )
                     runOnUiThread {
                         binding.etNombreUsuario.text?.clear()
                         binding.etContrasenaUsuario.text?.clear()
@@ -52,9 +58,9 @@ class AdministrarUsuarios : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val usuarios = db.usuarioDao().getAll()
             runOnUiThread {
-                adapter.submitList(usuarios)
                 binding.rvUsuarios.layoutManager = LinearLayoutManager(this@AdministrarUsuarios)
                 binding.rvUsuarios.adapter = adapter
+                adapter.submitList(usuarios)
             }
         }
     }
