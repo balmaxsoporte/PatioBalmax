@@ -20,4 +20,5 @@
     <string name="archivo_cargado">Archivo cargado correctamente</string>
     <string name="error_carga_archivo">Error al cargar el archivo</string>
     <string name="nombre_arrendatario">Nombre Arrendatario</string>
+    <string name="title_activity_login">Iniciar Sesión</string>
 </resources>
