@@ -22,7 +22,8 @@
         android:id="@+id/etContrasenaUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"/>
+        android:hint="Contraseña"
+        android:inputType="textPassword"/>
 
     <Spinner
         android:id="@+id/spPermisos"
@@ -42,6 +43,28 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:paddingTop="16dp">
+
+        <Button
+            android:id="@+id/btnCargarArrendatario"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Cargar Arrendatario"/>
+
+        <Button
+            android:id="@+id/btnCargarParticular"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Cargar Particular"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnVolver"
