@@ -66,6 +66,22 @@
             android:text="Cargar Particular"/>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvHistorialArrendatarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Últimos archivos de arrendatarios:"
+        android:textStyle="bold"
+        android:paddingTop="16dp"/>
+
+    <TextView
+        android:id="@+id/tvHistorialParticulares"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Últimos archivos de particulares:"
+        android:textStyle="bold"
+        android:paddingTop="16dp"/>
+
     <Button
         android:id="@+id/btnVolver"
         android:layout_width="match_parent"
