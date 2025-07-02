@@ -14,6 +14,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 class AdministrarUsuarios : AppCompatActivity() {
 
@@ -21,16 +23,23 @@ class AdministrarUsuarios : AppCompatActivity() {
     private lateinit var adapter: UsuarioAdapter
     private val db by lazy { AppDatabase.getDatabase(this) }
 
+    // Historial de archivos cargados
+    private val historialArrendatarios = mutableListOf<String>()
+    private val historialParticulares = mutableListOf<String>()
+
     // Contrato para seleccionar archivo
     private val pickFileLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         uri?.let { fileUri ->
             CoroutineScope(Dispatchers.IO).launch {
-                val content = contentResolver.openInputStream(fileUri)?.bufferedReader()?.readLines()
+                val content = contentResolver.openInputStream(fileUri)?.use { inputStream ->
+                    BufferedReader(InputStreamReader(inputStream)).readLines()
+                }
                 withContext(Dispatchers.Main) {
-                    if (content != null && content.isNotEmpty()) {
+                    if (!content.isNullOrEmpty()) {
                         Toast.makeText(this@AdministrarUsuarios, "Archivo cargado", Toast.LENGTH_SHORT).show()
+                        actualizarHistorial(fileUri.lastPathSegment ?: "", content.joinToString("\n"))
                     } else {
                         Toast.makeText(this@AdministrarUsuarios, "Error al leer el archivo", Toast.LENGTH_SHORT).show()
                     }
@@ -96,6 +105,20 @@ class AdministrarUsuarios : AppCompatActivity() {
                 binding.rvUsuarios.adapter = adapter
                 adapter.submitList(usuarios)
             }
+        }
+    }
+
+    private fun actualizarHistorial(nombreArchivo: String, contenido: String) {
+        if (nombreArchivo.contains("arrendatario", true)) {
+            if (historialArrendatarios.size >= 5) {
+                historialArrendatarios.removeFirst()
+            }
+            historialArrendatarios.add(contenido)
+        } else if (nombreArchivo.contains("particular", true)) {
+            if (historialParticulares.size >= 5) {
+                historialParticulares.removeFirst()
+            }
+            historialParticulares.add(contenido)
         }
     }
 }
