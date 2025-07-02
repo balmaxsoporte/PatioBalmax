@@ -14,7 +14,6 @@ class MapaEstacionamiento : AppCompatActivity() {
         binding = ActivityMapaEstacionamientoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Configurar botones de patios
         val listener = { patioNumero: Int ->
             val intent = Intent(this, PatioEstacionamiento::class.java).apply {
                 putExtra("patio_numero", patioNumero)
