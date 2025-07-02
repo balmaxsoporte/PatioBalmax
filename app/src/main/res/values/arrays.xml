@@ -1,0 +1,7 @@
+<resources>
+    <string-array name="permisos_usuario">
+        <item>Editar Usuarios</item>
+        <item>Editar Patentes de Patios</item>
+        <item>Validar Patios y Puestos</item>
+    </string-array>
+</resources>
