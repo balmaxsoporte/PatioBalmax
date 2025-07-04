@@ -2,19 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
     android:padding="8dp">
 
     <TextView
         android:id="@+id/tvNombreUsuario"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         android:text="Nombre de Usuario"
+        android:textSize="16sp"
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/tvPermisos"
-        android:layout_width="wrap_content"
+        android:id="@+id/tvPermiso"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="Permisos"/>
+        android:text="Permiso"
+        android:textSize="14sp"
+        android:textColor="#666666"/>
 </LinearLayout>
