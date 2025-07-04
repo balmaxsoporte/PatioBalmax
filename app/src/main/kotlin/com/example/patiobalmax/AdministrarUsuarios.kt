@@ -9,7 +9,6 @@ import com.example.patiobalmax.database.AppDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class AdministrarUsuarios : AppCompatActivity() {
 
@@ -38,10 +37,6 @@ class AdministrarUsuarios : AppCompatActivity() {
                             permisos = permisos
                         )
                     )
-                    withContext(Dispatchers.Main) {
-                        binding.etNombreUsuario.text?.clear()
-                        binding.etContrasenaUsuario.text?.clear()
-                    }
                 }
             }
         }
@@ -58,7 +53,7 @@ class AdministrarUsuarios : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             val usuarios = db.usuarioDao().getAll()
-            withContext(Dispatchers.Main) {
+            runOnUiThread {
                 binding.rvUsuarios.layoutManager = LinearLayoutManager(this@AdministrarUsuarios)
                 binding.rvUsuarios.adapter = adapter
                 adapter.submitList(usuarios)
