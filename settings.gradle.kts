@@ -3,7 +3,7 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
-        maven { url = uri("https://jitpack.io ") } // Si usas FilePicker
+        maven { url = uri("https://jitpack.io ") }
     }
 }
 include(":app")
