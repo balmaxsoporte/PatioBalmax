@@ -19,15 +19,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".MapaEstacionamiento"
             android:exported="false" />
+
         <activity
             android:name=".PatioEstacionamiento"
             android:exported="false" />
+
         <activity
             android:name=".EditarPatioEstacionamiento"
             android:exported="false" />
+
         <activity
             android:name=".AdministrarUsuarios"
             android:exported="false" />
