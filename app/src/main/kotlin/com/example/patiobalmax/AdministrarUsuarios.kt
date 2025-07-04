@@ -53,7 +53,7 @@ class AdministrarUsuarios : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         adapter = UsuarioAdapter { usuario ->
-            // Implementar edición o eliminación
+            Toast.makeText(this, "Editar ${usuario.nombreUsuario}", Toast.LENGTH_SHORT).show()
         }
 
         CoroutineScope(Dispatchers.IO).launch {
