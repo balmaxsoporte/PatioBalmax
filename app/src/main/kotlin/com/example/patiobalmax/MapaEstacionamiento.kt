@@ -2,33 +2,35 @@ package com.example.patiobalmax
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.patiobalmax.databinding.ActivityMapaEstacionamientoBinding
 
 class MapaEstacionamiento : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMapaEstacionamientoBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMapaEstacionamientoBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_mapa_estacionamiento)
 
-        val listener = { patioNumero: Int ->
+        val tvTituloPatio = findViewById<TextView>(R.id.tvTituloPatio)
+        tvTituloPatio.text = "Seleccione un Patio"
+
+        findViewById<Button>(R.id.btnPatio1).setOnClickListener {
             val intent = Intent(this, PatioEstacionamiento::class.java).apply {
-                putExtra("patio_numero", patioNumero)
+                putExtra("patio_numero", 1)
             }
             startActivity(intent)
         }
 
-        with(binding) {
-            btnPatio1.setOnClickListener { listener(1) }
-            btnPatio2.setOnClickListener { listener(2) }
-            btnPatio3.setOnClickListener { listener(3) }
-            btnPatio4.setOnClickListener { listener(4) }
-            btnPatio5.setOnClickListener { listener(5) }
-            btnPatio6.setOnClickListener { listener(6) }
-            btnPatio7.setOnClickListener { listener(7) }
+        findViewById<Button>(R.id.btnPatio2).setOnClickListener {
+            val intent = Intent(this, PatioEstacionamiento::class.java).apply {
+                putExtra("patio_numero", 2)
+            }
+            startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.btnAdministrarUsuarios).setOnClickListener {
+            startActivity(Intent(this, AdministrarUsuarios::class.java))
         }
     }
 }
