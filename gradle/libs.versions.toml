@@ -1,5 +1,5 @@
 [versions]
-agp = "8.11.0"
+agp = "8.3.0"
 kotlin = "2.0.21"
 coreKtx = "1.16.0"
 junit = "4.13.2"
@@ -24,5 +24,5 @@ lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx
 filepicker = { module = "com.github.tonyofrancis.FilePicker:filepicker", version = "1.0.3" }
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version = "8.3.0" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version = "2.0.21" }
