@@ -13,19 +13,15 @@ import kotlinx.coroutines.launch
 
 class LoginEstacionamiento : AppCompatActivity() {
 
-    private lateinit var etUsuario: EditText
-    private lateinit var etContrasena: EditText
-    private lateinit var btnLogin: Button
-
-    private val db by lazy { AppDatabase.getDatabase(this) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_estacionamiento)
 
-        etUsuario = findViewById(R.id.etUsuario)
-        etContrasena = findViewById(R.id.etContrasena)
-        btnLogin = findViewById(R.id.btnLogin)
+        val etUsuario = findViewById<EditText>(R.id.etUsuario)
+        val etContrasena = findViewById<EditText>(R.id.etContrasena)
+        val btnLogin = findViewById<Button>(R.id.btnLogin)
+
+        val db by lazy { AppDatabase.getDatabase(this) }
 
         btnLogin.setOnClickListener {
             val usuario = etUsuario.text.toString()
