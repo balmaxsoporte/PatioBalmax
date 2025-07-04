@@ -9,14 +9,20 @@ appcompat = "1.6.1"
 material = "1.10.0"
 
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version = "2.1.4" }
+
+room-runtime = { module = "androidx.room:room-runtime", version = "2.5.2" }
+room-ktx = { module = "androidx.room:room-ktx", version = "2.5.2" }
+room-compiler = { module = "androidx.room:room-compiler", version = "2.5.2" }
+
+lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version = "2.6.2" }
+lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version = "2.6.2" }
+
+filepicker = { module = "com.github.tonyofrancis.FilePicker:filepicker", version = "1.0.3" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
