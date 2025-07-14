@@ -1,0 +1,6 @@
+"Patio 1","Puesto 4","Camión","GG7788","",""
+"Patio 1","Puesto 5","Auto","HH8899","",""
+"Patio 1","Puesto 6","Van","II9900","",""
+"Patio 2","Puesto 4","Camión","JJ0011","",""
+"Patio 2","Puesto 5","Auto","KK1122","",""
+"Patio 2","Puesto 6","Van","LL2233","",""
