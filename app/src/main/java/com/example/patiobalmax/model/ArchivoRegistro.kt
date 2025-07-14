@@ -6,11 +6,11 @@ package com.example.patiobalmax.model
  * Patio 1,Puesto 1,Auto,AA1122,Rampla,BB1122,ING
  */
 data class ArchivoRegistro(
-    val patio: String,
-    val puesto: String,
-    val lugar1: String,
+    val patio: Int,
+    val puesto: Int,
+    val detalleLugar1: String,
     val patenteLugar1: String,
-    val lugar2: String,
-    val patenteLugar2: String,
+    val detalleLugar2: String? = null,
+    val patenteLugar2: String? = null,
     val nombreArrendatario: String? = null
 )
