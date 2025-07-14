@@ -1,3 +1,0 @@
-Patio 1,Puesto 4,Auto,GG1122,Rampla,HH3344
-Patio 1,Puesto 5,Camion,II5566,Termo,JJ7788
-Patio 1,Puesto 6,Van,KK9900,Carro,LL1122

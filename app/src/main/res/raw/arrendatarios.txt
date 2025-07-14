@@ -1,3 +1,0 @@
-Patio 1,Puesto 1,Auto,AA1122,Rampla,BB1122,ING
-Patio 1,Puesto 2,Camion,CC3344,Termo,DD5566,SPATE
-Patio 1,Puesto 3,Van,EE7788,Carro,FF9900,MARCO
