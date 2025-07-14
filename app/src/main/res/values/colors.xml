@@ -1,0 +1,9 @@
+<resources>
+    <color name="colorPrimary">#FF5722</color>
+    <color name="colorPrimaryDark">#E64A19</color>
+    <color name="colorAccent">#FFEB3B</color>
+    <color name="verde_arrendatario">#4CAF50</color>
+    <color name="azul_particular">#2196F3</color>
+    <color name="blanco_libre">#FFFFFF</color>
+    <color name="gris_fondo">#F5F5F5</color>
+</resources>
