@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">PatioBalmax</string>
+
+    <!-- Pantalla de Login -->
+    <string name="titulo_login">Login Estacionamiento</string>
+    <string name="mensaje_bienvenida">Bienvenido a PatioBalmax</string>
+    <string name="boton_iniciar_sesion">Iniciar Sesión</string>
+    <string name="error_credenciales">Usuario o contraseña incorrecta</string>
+    <string name="placeholder_usuario">Ingrese su usuario</string>
+    <string name="placeholder_contrasena">Ingrese su contraseña</string>
+
+    <!-- Pantalla Principal -->
+    <string name="titulo_mapa">Mapa del Estacionamiento</string>
+    <string name="texto_acceso_rapido_patio">Acceso rápido a patios:</string>
+    <string name="seleccionar_patio">Seleccione un patio para ver detalles</string>
+
+    <!-- Detalles de Patio -->
+    <string name="editar_puesto">Editar Puesto</string>
+    <string name="validar_puesto">Validar Puesto</string>
+    <string name="estado_libre">Libre</string>
+    <string name="estado_arrendatario">Arrendatario</string>
+    <string name="estado_particular">Particular</string>
+    <string name="prompt_tipo_vehiculo_lugar1">Tipo de Vehículo Lugar 1</string>
+    <string name="prompt_tipo_vehiculo_lugar2">Tipo de Vehículo Lugar 2</string>
+
+    <!-- Administración de Usuarios -->
+    <string name="administrar_usuarios_titulo">Administrar Usuarios</string>
+    <string name="administrar_usuarios_subtitulo">Gestión de cuentas y privilegios</string>
+    <string name="usuario_administrador">Administrador</string>
+    <string name="usuario_edicion_patentes">Editar Patentes de Patios</string>
+    <string name="usuario_validar_puestos">Validar Patios y Puestos</string>
+    <string name="mensaje_sin_permisos">No tienes permisos suficientes</string>
+    <string name="boton_cargar_archivos">Cargar Archivos .txt</string>
+
+    <!-- Carga de Archivos -->
+    <string name="archivo_seleccionado">Archivo seleccionado:</string>
+    <string name="archivo_cargado_exitoso">Archivo cargado correctamente</string>
+    <string name="archivo_cargado_fallo">Error al cargar el archivo</string>
+</resources>
