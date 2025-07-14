@@ -17,6 +17,9 @@ object Constants {
     const val ARCHIVO_PARTICULARES = "particulares.txt"
 
     // Límites de historial
+    const val PREFS_NAME = "patiobalmax_prefs"
+    const val KEY_ARCHIVOS_SUBIDOS = "archivos_subidos"
+    const val MAX_ARCHIVOS_GUARDADOS = 5
     const val MAX_HISTORIAL = 5
 
     // Estados de puestos
@@ -32,4 +35,9 @@ object Constants {
     val TIPOS_LUGAR2 = listOf(
         "Rampla", "Termo", "Cama Baja", "Container", "Tolva", "Estanque", "Carro"
     )
+}
+
+sealed class TipoArchivo(val nombre: String) {
+    object Arrendatarios : TipoArchivo("arrendatarios.txt")
+    object Particulares : TipoArchivo("particulares.txt")
 }
