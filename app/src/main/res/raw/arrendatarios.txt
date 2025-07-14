@@ -1,3 +1,0 @@
-"Patio 1","Puesto 1","Auto","AA1122","camioneta","BB1122","ING"
-"Patio 1","Puesto 2","Camión","CC3344","Termo","DD5566","SPATE"
-"Patio 1","Puesto 3","Camión","EE7788","Carro","FF9900","EMPRESA X"
