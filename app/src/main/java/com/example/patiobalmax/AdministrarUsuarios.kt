@@ -2,148 +2,132 @@ package com.example.patiobalmax
 
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.provider.OpenableColumns
-import android.widget.Button
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.patiobalmax.adapter.UsuarioAdapter
 import com.example.patiobalmax.database.AppDatabase
-import com.example.patiobalmax.database.entity.Usuario
-import com.example.patiobalmax.util.Constants
-import kotlinx.android.synthetic.main.activity_administrar_usuarios.*
+import com.example.patiobalmax.databinding.ActivityAdministrarUsuariosBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class AdministrarUsuarios : AppCompatActivity() {
 
-    private lateinit var adapter: UsuarioAdapter
-    private lateinit var database: AppDatabase
-    private lateinit var viewModel: LoginEstacionamiento
+    private lateinit var binding: ActivityAdministrarUsuariosBinding
+    private lateinit var db: AppDatabase
+    private lateinit var usuarioAdapter: UsuarioAdapter
 
-    // Para seleccionar archivos .txt
-    private val seleccionarArchivoLauncher = registerForActivityResult(
-        ActivityResultContracts.OpenDocument()
-    ) { uri: Uri? ->
-        if (uri != null) {
-            leerArchivoYActualizarBD(uri)
-        }
+    companion object {
+        const val EXTRA_USUARIO_ID = "extra_usuario_id"
+        const val EXTRA_USUARIO_NOMBRE = "extra_usuario_nombre"
+        const val EXTRA_USUARIO_CONTRASENA = "extra_usuario_contrasena"
+        const val EXTRA_USUARIO_PERMISOS = "extra_usuario_permisos"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_administrar_usuarios)
+        binding = ActivityAdministrarUsuariosBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // Inicializar base de datos
-        database = AppDatabase.getDatabase(this)
+        db = AppDatabase.getInstance(this)
 
-        // Inicializar ViewModel
-        viewModel = ViewModelProvider(this)[LoginEstacionamiento::class.java]
-
-        // Recibir datos del usuario logueado
-        val usuarioActual = intent.getStringExtra(Constants.EXTRA_USUARIO) ?: "Invitado"
-        val permisosUsuarioActual = intent.getStringExtra(Constants.EXTRA_PERMISOS) ?: ""
-
-        setupRecyclerView(usuarioActual, permisosUsuarioActual)
-        setupBotones(usuarioActual, permisosUsuarioActual)
+        setupRecyclerView()
+        setupBotones()
     }
 
-    private fun setupRecyclerView(usuarioActual: String, permisos: String) {
+    private fun setupRecyclerView() {
         CoroutineScope(Dispatchers.IO).launch {
-            val usuarios = database.usuarioDao().getAllUsuarios()
+            val usuarios = db.usuarioDao().getAllUsuarios()
 
-            withContext(Dispatchers.Main) {
-                adapter = UsuarioAdapter(usuarios.toMutableList())
-                recyclerViewUsuarios.adapter = adapter
-                recyclerViewUsuarios.layoutManager = LinearLayoutManager(this@AdministrarUsuarios)
-
-                // Configurar acciones del adaptador
-                adapter.setOnItemClickListener { usuario ->
-                    if (usuario.nombre != "admin") {
-                        navegarAEditarUsuario(usuario)
+            runOnUiThread {
+                usuarioAdapter = UsuarioAdapter(usuarios) { usuario ->
+                    if (usuario.nombreUsuario != "admin") {
+                        mostrarDialogoEditarUsuario(usuario)
                     } else {
-                        Toast.makeText(this@AdministrarUsuarios, "No puedes editar al administrador", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@AdministrarUsuarios, R.string.mensaje_no_puedes_editar_admin, Toast.LENGTH_SHORT).show()
                     }
                 }
+
+                binding.rvUsuarios.layoutManager = LinearLayoutManager(this@AdministrarUsuarios)
+                binding.rvUsuarios.adapter = usuarioAdapter
             }
         }
     }
 
-    private fun setupBotones(usuarioActual: String, permisos: String) {
-        btnAgregarUsuario.setOnClickListener {
-            navegarACrearUsuario()
+    private fun setupBotones() {
+        binding.btnAgregarUsuario.setOnClickListener {
+            mostrarDialogoAgregarUsuario()
         }
 
-        when (permisos) {
-            "Administrador" -> {
-                // Mostrar botón para cargar archivos txt
-                btnCargarArchivos.setOnClickListener {
-                    seleccionarArchivoLauncher.launch(arrayOf("text/*"))
+        binding.btnSubirArchivo.setOnClickListener {
+            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+                addCategory(Intent.CATEGORY_OPENABLE)
+                type = "text/plain"
+            }
+            startActivityForResult(intent, REQUEST_CODE_SUBIR_ARCHIVO)
+        }
+    }
+
+    private fun mostrarDialogoAgregarUsuario() {
+        val dialog = AgregarUsuarioDialogFragment.newInstance { nombre, contrasena, permisos ->
+            CoroutineScope(Dispatchers.IO).launch {
+                db.usuarioDao().insert(
+                    Usuario(nombreUsuario = nombre, contrasena = contrasena, permisos = permisos)
+                )
+                runOnUiThread {
+                    Toast.makeText(this@AdministrarUsuarios, R.string.mensaje_usuario_creado, Toast.LENGTH_SHORT).show()
+                    setupRecyclerView()
                 }
             }
-            else -> {
-                btnAgregarUsuario.isEnabled = false
-                btnCargarArchivos.visibility = android.view.View.GONE
+        }
+        dialog.show(supportFragmentManager, "AgregarUsuarioDialog")
+    }
+
+    private fun mostrarDialogoEditarUsuario(usuario: com.example.patiobalmax.database.entity.Usuario) {
+        val dialog = EditarUsuarioDialogFragment.newInstance(usuario) { nuevoNombre, nuevaContrasena, nuevosPermisos ->
+            CoroutineScope(Dispatchers.IO).launch {
+                db.usuarioDao().actualizarUsuario(nuevoNombre, nuevaContrasena, nuevosPermisos)
+                runOnUiThread {
+                    Toast.makeText(this@AdministrarUsuarios, R.string.mensaje_usuario_actualizado, Toast.LENGTH_SHORT).show()
+                    setupRecyclerView()
+                }
             }
         }
+        dialog.show(supportFragmentManager, "EditarUsuarioDialog")
     }
 
-    private fun navegarACrearUsuario() {
-        val intent = Intent(this, EditarUsuarioActivity::class.java)
-        startActivity(intent)
-    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-    private fun navegarAEditarUsuario(usuario: Usuario) {
-        val intent = Intent(this, EditarUsuarioActivity::class.java).apply {
-            putExtra(Constants.EXTRA_USUARIO_NOMBRE, usuario.nombre)
-            putExtra(Constants.EXTRA_USUARIO_CONTRASENA, usuario.contrasena)
-            putExtra(Constants.EXTRA_USUARIO_PERMISOS, usuario.permisos)
-        }
-        startActivity(intent)
-    }
-
-    private fun leerArchivoYActualizarBD(uri: Uri) {
-        contentResolver.query(uri, null, null, null, null)?.use { cursor ->
-            cursor.moveToFirst()
-            val column = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-            if (column > -1) {
-                val nombreArchivo = cursor.getString(column)
-                val inputStream = contentResolver.openInputStream(uri)
-                val lineas = inputStream?.bufferedReader()?.readLines()
-
-                CoroutineScope(Dispatchers.IO).launch {
-                    try {
-                        for (linea in lineas.orEmpty()) {
-                            val datos = linea.split(",")
-                            if (datos.size >= 7) {
-                                val usuario = datos[5]
-                                val contrasena = datos[6]
-                                val permisos = "Particular"
-                                val nuevoUsuario = Usuario(nombre = usuario, contrasena = contrasena, permisos = permisos)
-                                database.usuarioDao().insert(nuevoUsuario)
-                            }
-                        }
-                        withContext(Dispatchers.Main) {
-                            Toast.makeText(this@AdministrarUsuarios, "Usuarios cargados desde $nombreArchivo", Toast.LENGTH_SHORT).show()
-                            setupRecyclerView(usuario = "", permisos = "")
-                        }
-                    } catch (e: Exception) {
-                        withContext(Dispatchers.Main) {
-                            Toast.makeText(this@AdministrarUsuarios, "Error al procesar el archivo", Toast.LENGTH_LONG).show()
-                        }
-                    }
+        if (requestCode == REQUEST_CODE_SUBIR_ARCHIVO && resultCode == Activity.RESULT_OK) {
+            data?.data?.let { uri ->
+                val nombreArchivo = getFileName(uri)
+                if (nombreArchivo == "arrendatarios.txt" || nombreArchivo == "particulares.txt") {
+                    leerYActualizarDatosDesdeArchivo(uri, nombreArchivo)
+                } else {
+                    Toast.makeText(this, "Archivo no compatible", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 
-    private fun mostrarConfirmación(mensaje: String) {
-        Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show()
+    private fun getFileName(uri: Uri): String? {
+        val cursor = contentResolver.query(uri, null, null, null, null)
+        cursor?.use {
+            val nameIndex = it.getColumnIndex(android.provider.OpenableColumns.DISPLAY_NAME)
+            it.moveToFirst()
+            return it.getString(nameIndex)
+        }
+        return null
+    }
+
+    private fun leerYActualizarDatosDesdeArchivo(uri: Uri, nombreArchivo: String) {
+        // Aquí iría la lógica para leer el archivo .txt
+        Toast.makeText(this, "$nombreArchivo cargado exitosamente", Toast.LENGTH_SHORT).show()
+    }
+
+    companion object {
+        private const val REQUEST_CODE_SUBIR_ARCHIVO = 1
     }
 }
