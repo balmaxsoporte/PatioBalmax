@@ -1,0 +1,6 @@
+"Patio 1","Puesto 1","Camión","AA1122","","","ING"
+"Patio 1","Puesto 2","Auto","BB2233","","","SPATE"
+"Patio 1","Puesto 3","Van","CC3344","","","ING"
+"Patio 2","Puesto 1","Camión","DD4455","","","SPATE"
+"Patio 2","Puesto 2","Maquinaria Pesada","EE5566","","","ING"
+"Patio 2","Puesto 3","Camioneta","FF6677","","","SPATE"

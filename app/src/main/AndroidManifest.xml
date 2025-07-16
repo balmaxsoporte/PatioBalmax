@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.patiobalmax">
+
+    <!-- Permisos necesarios -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icono_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- Actividad principal -->
+        <activity
+            android:name=".ui.LoginEstacionamiento"
+            android:label="@string/title_login_estacionamiento"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.MapaEstacionamiento"
+            android:label="@string/title_mapa_estacionamiento"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.PatioEstacionamiento"
+            android:label="@string/title_patio_estacionamiento"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.EditarPatioEstacionamiento"
+            android:label="@string/title_editar_patio_estacionamiento"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.AdministrarUsuarios"
+            android:label="@string/title_administrar_usuarios"
+            android:screenOrientation="portrait" />
+
+    </application>
+
+</manifest>
